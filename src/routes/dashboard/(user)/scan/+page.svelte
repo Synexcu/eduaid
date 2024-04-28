@@ -131,9 +131,6 @@
             </Button>
         </CldUploadWidget>
 
-        <!-- <Widget /> -->
-
-
         {#if error}
             <p>{error}</p>
         {/if}
@@ -148,33 +145,36 @@
     </div>
 
     <div class="mt-10">
-        <h1>Panel Kontrol</h1>
+        <h1 class="text-1xl font-bold">Panel Kontrol</h1>
         <!-- <SuperDebug data={$formData} /> -->
-        <br />
-        <form method="POST" use:enhance>
-            <Form.Field {form} name="link">
-                <Form.Control let:attrs>
-                    <Form.Label>Upload link gambar ke Database: </Form.Label>
-                    <Input disabled {...attrs} bind:value={$formData.link} />
-                    <input hidden name={attrs.name} value={$formData.link}/>
-                </Form.Control>
-            </Form.Field>
-    
-            {#if !info}
-            <Form.Button disabled class="mt-4">
-                Upload ke Database
-            </Form.Button>
-            {/if}
+        <hr />
+        <div class="mt-2">
+            <form method="POST" use:enhance>
+                <Form.Field {form} name="link">
+                    <Form.Control let:attrs>
+                        <Form.Label>Upload link gambar ke Database: </Form.Label>
+                        <Input disabled {...attrs} bind:value={$formData.link} />
+                        <input hidden name={attrs.name} value={$formData.link}/>
+                    </Form.Control>
+                </Form.Field>
+        
+                {#if !info}
+                <Form.Button disabled class="mt-4">
+                    Upload ke Database
+                </Form.Button>
+                {/if}
 
-            {#if info}
-            <Form.Button class="mt-4">
-                Upload ke Database
-            </Form.Button>
-            {/if}
-        </form>
+                {#if info}
+                <Form.Button class="mt-4">
+                    Upload ke Database
+                </Form.Button>
+                {/if}
+            </form>
+        </div>
         
         <div class="mt-10">
-            <h1>Konfigurasi AI</h1>
+            <h1 class="text-1xl font-bold">Konfigurasi AI</h1>
+            <hr />
             <form class="mt-5" on:submit|preventDefault>
                 <input type="hidden" name="q" value={secure_url} />
                 <Input class="mt-2" name=ans bind:value={ans} placeholder="Masukkkan kunci jawaban dengan format: A B C B D"/>
@@ -188,7 +188,8 @@
 
     <section>
         <div class="mt-10">
-            <h1>Hasil Scan AI:</h1>
+            <h1 class="text-1xl font-bold">Hasil Scan AI:</h1>
+            <hr />
             <form class="mt-5">
                 <Form.Field {form} name='id'>
                     <Form.Control let:attrs>

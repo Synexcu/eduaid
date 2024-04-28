@@ -14,9 +14,9 @@ def main (path,
 
     ### DEFINING
     ## Online Path
-    resp = requests.get(path)
-    onlineArr = np.asarray(bytearray(resp.content), dtype=np.uint8)
-    imgOnline = cv2.imdecode(onlineArr, -1)
+    resp = requests.get(path, stream=True).raw
+    onlineArr = np.asarray(bytearray(resp.read()), dtype=np.uint8)
+    imgOnline = cv2.imdecode(onlineArr, cv2.IMREAD_COLOR)
 
     widthImg = 700
     heightImg = 700
@@ -28,7 +28,7 @@ def main (path,
             'D': 3,
             'E': 4}
 
-    imgOnline = cv2.resize(imgOnline,(widthImg, heightImg))
+    # imgOnline = cv2.resize(imgOnline,(widthImg, heightImg))
     img = imgOnline
 
     ## Offline path
